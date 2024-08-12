@@ -14,8 +14,7 @@ import java.util.List;
 public class ProductController {
 
     private ProductService productService;
-    //@Autowired
-    //constructor injection
+
 
     ProductController(@Qualifier("fakeStoreProductService") ProductService productService){
         this.productService=productService;
@@ -45,25 +44,6 @@ public class ProductController {
     public GenericProductDto updateProductById(@PathVariable("id") Long id,@RequestBody GenericProductDto genericProductDto){
       return productService.updateProductById(id,genericProductDto);
     }
-    /*@ExceptionHandler(ProductNotFoundException.class)
-    private ResponseEntity<ExceptionDto> HandleProductNotFoundException(ProductNotFoundException productNotFoundException)
-    {
-        ExceptionDto exceptionDto=new ExceptionDto();
-        exceptionDto.setMeassage(productNotFoundException.getMessage());
-        exceptionDto.setHttpStatus(HttpStatus.NOT_FOUND);
 
-
-        ResponseEntity responseEntity=new ResponseEntity(exceptionDto,HttpStatus.NOT_FOUND);
-        return  responseEntity;
-    }*/
 
 }
-/*
-3 ways of Dependency injection
-1.constructor injection
-2.Field injection
-3.setter injection
-
-
-
- */
