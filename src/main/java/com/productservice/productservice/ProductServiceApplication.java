@@ -1,14 +1,34 @@
 package com.productservice.productservice;
 
-import com.productservice.productservice.inheritanceRelation.singletable.*;
-
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.productservice.productservice.models.Category;
+import com.productservice.productservice.models.Order;
+import com.productservice.productservice.models.Price;
+import com.productservice.productservice.models.Product;
+import com.productservice.productservice.repositories.PriceRepository;
+import com.productservice.productservice.repositories.CategoryRepository;
+import com.productservice.productservice.repositories.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @SpringBootApplication
 public class ProductServiceApplication implements CommandLineRunner {
+
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final PriceRepository priceRepository;
+
+    public ProductServiceApplication(
+            CategoryRepository categoryRepository, ProductRepository productRepository,
+            PriceRepository priceRepository) {
+        this.categoryRepository = categoryRepository;
+
+        this.productRepository = productRepository;
+        this.priceRepository = priceRepository;
+    }
     /* private MentorRepository mentorRepository;
 
      private StudentRepository studentRepository;
@@ -16,19 +36,22 @@ public class ProductServiceApplication implements CommandLineRunner {
      private UserRepository userRepository;
 */
 
-    private MentorRepository mentorRepository;
+   /* private MentorRepository mentorRepository;
     private StudentRepository studentRepository;
     private UserRepository userRepository;
-
-    ProductServiceApplication(
-                              @Qualifier("st_userRepository") UserRepository userRepository,
-                              @Qualifier("st_studentRepository")StudentRepository studentRepository,
-                              @Qualifier("st_mentorRepository") MentorRepository mentorRepository){
+    private CategoryRepository categoryRepository;
+*/
+    /*ProductServiceApplication(
+            @Qualifier("st_userRepository") UserRepository userRepository,
+            @Qualifier("st_studentRepository")StudentRepository studentRepository,
+            @Qualifier("st_mentorRepository") MentorRepository mentorRepository,
+            CategoryRepository categoryRepository){
         this.studentRepository=studentRepository;
         this.userRepository=userRepository;
         this.mentorRepository=mentorRepository;
+        this.categoryRepository=categoryRepository;
 
-    }
+    }*/
 
     public static void main(String[] args) {
         SpringApplication.run(ProductServiceApplication.class, args);
@@ -59,25 +82,56 @@ public class ProductServiceApplication implements CommandLineRunner {
             System.out.println(user1.toString());
         }*/
 
-       User user=new User();
-        user.setName("user1");
-        user.setEmail("user1@gmail.com");
-        userRepository.save(user);
 
-        Student student=new Student();
-        student.setName("student1");
-        student.setEmail("student1@gmail.com");
-        student.setPsp(89.7F);
-        studentRepository.save(student);
+        /*Category category=new Category();
+        category.setName("Apple devices");
 
-        Mentor mentor=new Mentor();
-        mentor.setRating(8F);
-        mentor.setName("mentor1");
-        mentor.setEmail("mentor1@gmail.com");
-        mentorRepository.save(mentor);
+         Category savedCategory=categoryRepository.save(category);
+      */
+
+  /*   Optional<Category> optionalCategory=    categoryRepository.findById(UUID.fromString("dddd2369-759b-4c1e-bce6-433f823fc68e"));
+      if(optionalCategory.isEmpty()){
+          throw  new Exception("category was null");
+      }
+      Category category= optionalCategory.get();*/
+       /* Product product=new Product();
+        product.setTitle("IPhone15");
+        product.setDescription("Best Iphone ever");
+        product.setCategory(optionalCategory.get());
+         Product savedProduct=   productRepository.save(product);
+*/
+//find all product with category =apple devices
+      /*  List<Product> productList=category.getProducts();//SQL Query
+        for(Product product1:productList){
+            System.out.println(product1.getTitle());
+        }
+*/
 
 
+  /* Price price=new Price();
+   price.setCurrency("INR");
+   price.setValue(2300);
+   Price SavedPrice=priceRepository.save(price);
 
+        Category category=new Category();
+        category.setName("Apple Products");
+        Category savedCategory=categoryRepository.save(category);
+
+        Product product=new Product();
+        product.setTitle("IPhone 15 Pro");
+        product.setDescription("Best Iphone Ever");
+        product.setCategory(savedCategory);
+        product.setPrice(SavedPrice);
+        Product savedProduct= productRepository.save(product);
+*/
+
+        /*Optional<Price> price=priceRepository.findById(UUID.fromString("97415f14-420e-46ea-9078-31d2bce088af"));
+
+        if(price.isEmpty()){
+            throw new RuntimeException("Price is empty");
+        }
+        Price price1=price.get();*/
+       // priceRepository.deleteById(UUID.fromString("97415f14-420e-46ea-9078-31d2bce088af"));
 
     }
 }
