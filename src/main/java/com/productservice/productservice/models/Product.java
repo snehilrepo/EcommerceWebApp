@@ -1,12 +1,10 @@
 package com.productservice.productservice.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.engine.internal.Cascade;
 
 @Getter
 @Setter
@@ -19,11 +17,9 @@ public class Product extends BaseModel {
     private String image;
     //category is not a primitive attribute,it's a relation
     @ManyToOne(optional = false)
-    @JoinColumn(nullable = false)
-
     private Category category;
-    @OneToOne(optional = false)
-    @JoinColumn(nullable = false)
+
+    @OneToOne(cascade= CascadeType.PERSIST)
     private Price price;
 
 
