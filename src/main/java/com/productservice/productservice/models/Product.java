@@ -19,7 +19,7 @@ public class Product extends BaseModel {
     @ManyToOne(optional = false)
     private Category category;
 
-    @OneToOne(cascade= CascadeType.PERSIST)
+    @OneToOne(cascade= {CascadeType.PERSIST,CascadeType.REMOVE})
     private Price price;
 
 
