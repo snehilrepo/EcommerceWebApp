@@ -1,14 +1,14 @@
 package com.productservice.productservice.models;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.engine.internal.Cascade;
 
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product extends BaseModel {
 
     private String title;

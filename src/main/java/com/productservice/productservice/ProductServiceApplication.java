@@ -12,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -199,13 +200,26 @@ public class ProductServiceApplication implements CommandLineRunner {
         product3.setCategory(category);
 
         Product savedProduct3= productRepository.save(product3);*/
-      Optional<Category> optionalCategory=categoryRepository.findById(UUID.fromString("0ff85470-8bf3-4d9b-ba7b-0fd0b284b0b4"));
+      /*Optional<Category> optionalCategory=categoryRepository.findById(UUID.fromString("0ff85470-8bf3-4d9b-ba7b-0fd0b284b0b4"));
       Category category1=optionalCategory.get();
-     /* List<Product> productList=category1.getProducts();
+  */   /* List<Product> productList=category1.getProducts();
 
         for(Product product:productList){
             System.out.println(product.getTitle());
         }
+
+
 */
+        /*Category category=new Category();
+        category.setName("Samsung");
+        Category category1= categoryRepository.save(category);
+
+        Price price=new Price();
+        price.setCurrency("INR");
+        price.setValue(49000);
+         Product product=new Product("Samsung fold5","Samsung foldable phone","S-IMG",category1,price);
+        productRepository.save(product);
+*/
+        List<Product> products=productRepository.findAllByPrice_ValueGreaterThan(50000);
     }
 }
