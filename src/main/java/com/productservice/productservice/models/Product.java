@@ -22,6 +22,8 @@ public class Product extends BaseModel {
     @OneToOne(cascade= {CascadeType.PERSIST,CascadeType.REMOVE})
     private Price price;
 
+    private int inventoryCount;
+
 
 }
 //product : catgory

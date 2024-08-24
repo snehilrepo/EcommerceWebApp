@@ -11,12 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+
 public class ProductController {
 
     private ProductService productService;
 
 
-    ProductController(@Qualifier("fakeStoreProductService") ProductService productService){
+    ProductController( ProductService productService){
         this.productService=productService;
     }
 

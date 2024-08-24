@@ -15,12 +15,12 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
     List<Product> findAll();//GET ALL THE PRODUCTS FROM PRODUCT table
 
 
-    List<Product> findAllByTitle(String title);
+    List<Product> findAllByTitle(String title);//GET all the product by with a string title.
 
 
-    List<Product> findAllByTitleAndDescription(String title, String description);
-    @Query(value = "select * from product",nativeQuery = true)
-   List<Product> findAllByPrice_ValueGreaterThan(Integer x);
+    List<Product> findAllByTitleAndDescription(String title, String description);//GET all the product by with a string title and description
+    @Query(value = "select * from product",nativeQuery = true)//this will run the query which is present inside value attribute
+    List<Product> findAllByPrice_ValueGreaterThan(Integer x);
 }
 
 

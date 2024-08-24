@@ -220,6 +220,6 @@ public class ProductServiceApplication implements CommandLineRunner {
          Product product=new Product("Samsung fold5","Samsung foldable phone","S-IMG",category1,price);
         productRepository.save(product);
 */
-        List<Product> products=productRepository.findAllByPrice_ValueGreaterThan(50000);
+        //List<Product> products=productRepository.findAllByPrice_ValueGreaterThan(50000);
     }
 }
